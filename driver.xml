@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c4soap name="Driver" version="4">
+    <manufacturer>Example Manufacturer</manufacturer>
+    <model>Network UPS Tools Driver</model>
+    <serialnumber>12345</serialnumber>
+    <driverinfo>
+        <displayname>NUT Integration</displayname>
+        <type>Generic</type>
+        <!-- Category can be 'UPS', 'Power Management', etc. -->
+        <deviceicon></deviceicon>
+    </driverinfo>
+    
+    <!-- Driver Properties (shown to the user in Composer) -->
+    <drivername>NUT Integration</drivername>
+    <properties>
+        <property id="NUT_SERVER_IP" name="NUT Server IP" type="STRING" default="192.168.1.100"/>
+        <property id="NUT_SERVER_PORT" name="NUT Server Port" type="INTEGER" default="3493"/>
+        <property id="UPS_NAME" name="UPS Name" type="STRING" default="ups"/>
+        <property id="USERNAME" name="Username" type="STRING"/>
+        <property id="PASSWORD" name="Password" type="STRING"/>
+        <property id="POLLING_INTERVAL" name="Polling Interval" type="INTEGER" default="60"/>
+    </properties>
+    
+    <!-- Lua Files -->
+    <support>
+        <script file="driver.lua"/>
+        <script file="proxy.lua"/>
+        <script file="nut_module.lua"/>
+    </support>
+    
+    <proxy>
+        <proxyType>Generic</proxyType>
+        <drivername>NUT UPS Proxy</drivername>
+        <!-- If you need the device to appear as an AV/AMP device or something else, you’d specify a different proxy type here. -->
+    </proxy>
+    
+    <!-- This is a simplified example. In a real driver, you might define additional mappings, events, etc. -->
+</c4soap>
